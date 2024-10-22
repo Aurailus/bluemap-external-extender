@@ -81,16 +81,16 @@ iframeRef.current.contentWindow.postMessage(
 Command: `updateSettings`
 Options: `setting` (string) - setting name
 
-- `renderDistance` (number) - render distance
-- `renderDistanceLowDetail` (number) - low detail render distance
-- `sunlightStrength` (number) - sunlight strength
-- `ambientLight` (number) - ambient light strength
-- `pauseTileLoading` (boolean) - pause tile loading
+- `hiresDistance` (number) - set hires distance
+- `lowresDistance` (number) - set lowres distance
+- `sunlightStrength` (number) - set sunlight strength
+- `ambientLight` (number) - set ambient light strength
+- `pauseTileLoading` (boolean) - set pause tile loading
 - `invertMouse` (boolean) - invert mouse
-- `mouseSensitivity` (number) - mouse sensitivity
-- `showChunkBorders` (boolean) - show chunk borders
-- `showDebug` (boolean) - show debug information
-- `superSampling` (number) - super sampling value
+- `mouseSensitivity` (number) - set mouse sensitivity
+- `showChunkBorders` (boolean) - set show chunk borders
+- `showDebug` (boolean) - set show debug information
+- `superSampling` (number) - set super sampling value
 - `resetSettings` (boolean) - reset all settings
   Value: `value` (any) - setting value
 
@@ -171,7 +171,7 @@ iframeRef.current.contentWindow.postMessage(
 );
 ```
 
-**Get map list**
+**Get map list and listen to map list update**
 
 Command: `getMapList`
 Response: `mapListUpdate`
@@ -186,85 +186,287 @@ iframeRef.current.contentWindow.postMessage(
 );
 ```
 
+Listener: `mapListUpdate`
+Data: `maps` (array) - map list
+Note: This event is triggered using `getMapList`
+
+```javascript
+window.addEventListener('mapListUpdate', (event) => 
+  {
+  console.log(event.data);
+  }
+);
+```
+
+
+**Get min hires distance and listen to min hires distance update**
+Command: `getMinHiresDistance`
+Response: `minHiresDistance`
+```javascript
+iframeRef.current.contentWindow.postMessage(
+  {
+    type: 'getMinHiresDistance'
+  },
+''
+);
+```
+
+Listener: `minHiresDistance`
+Data: `value` (number) - min hires distance
+```javascript
+window.addEventListener('minHiresDistance', (event) => 
+  {
+  console.log(event.data);
+  }
+);
+```
+
+
+**Get max hires distance and listen to max hires distance update**
+Command: `getMaxHiresDistance`
+Response: `maxHiresDistance`
+```javascript
+iframeRef.current.contentWindow.postMessage(
+  {
+    type: 'getMaxHiresDistance'
+  },
+''
+);
+```
+
+Listener: `maxHiresDistance`
+Data: `value` (number) - max hires distance
+```javascript
+window.addEventListener('maxHiresDistance', (event) => 
+  {
+  console.log(event.data);
+  }
+);
+```
+
+
+**Get default hires distance and listen to default hires distance update**
+Command: `getDefaultHiresDistance`
+Response: `defaultHiresDistance`
+```javascript
+iframeRef.current.contentWindow.postMessage(
+  {
+    type: 'getDefaultHiresDistance'
+  },
+''
+);
+```
+
+Listener: `defaultHiresDistance`
+Data: `value` (number) - default hires distance
+```javascript
+window.addEventListener('defaultHiresDistance', (event) => 
+  {
+  console.log(event.data);
+  }
+);
+```
+
+
+**Get min lowres distance and listen to min lowres distance update**
+Command: `getMinLowresDistance`
+Response: `minLowresDistance`
+```javascript
+iframeRef.current.contentWindow.postMessage(
+  {
+    type: 'getMinLowresDistance'
+  },
+''
+);
+```
+
+Listener: `minLowresDistance`
+Data: `value` (number) - min lowres distance
+```javascript
+window.addEventListener('minLowresDistance', (event) => {
+  console.log(event.data);
+});
+```
+
+**Get max lowres distance and listen to max lowres distance update**
+Command: `getMaxLowresDistance`
+Response: `maxLowresDistance`
+```javascript
+iframeRef.current.contentWindow.postMessage(
+  {
+    type: 'getMaxLowresDistance'
+  },
+''
+);
+```
+
+Listener: `maxLowresDistance`
+Data: `value` (number) - max lowres distance
+```javascript
+window.addEventListener('maxLowresDistance', (event) => {
+  console.log(event.data);
+});
+```
+
+**Get default lowres distance and listen to default lowres distance update**
+Command: `getDefaultLowresDistance`
+Response: `defaultLowresDistance`
+```javascript
+iframeRef.current.contentWindow.postMessage(
+  {
+    type: 'getDefaultLowresDistance'
+  },
+''
+);
+```
+
+Listener: `defaultLowresDistance`
+Data: `value` (number) - default lowres distance
+```javascript
+window.addEventListener('defaultLowresDistance', (event) => 
+  {
+  console.log(event.data);
+  }
+);
+```
+
+**Get default resolution and listen to default resolution update**
+Command: `getDefaultResolution`
+Response: `defaultResolution`
+```javascript
+iframeRef.current.contentWindow.postMessage(
+  {
+    type: 'getDefaultResolution'
+  },
+''
+);
+```
+
+Listener: `defaultResolution`
+Data: `value` (number) - default resolution
+```javascript
+window.addEventListener('defaultResolution', (event) => {
+  console.log(event.data);
+});
+```
+
+**Get version and listen to version update**
+Command: `getVersion`
+Response: `version`
+```javascript
+iframeRef.current.contentWindow.postMessage(
+  {
+    type: 'getVersion'
+  },
+''
+);
+
+
+**Get all settings and listen to all settings update**
+Command: `getAllSettings`
+Response: `allSettings`
+```javascript
+iframeRef.current.contentWindow.postMessage(
+  {
+    type: 'getAllSettings'
+  },
+''
+);
+```
+
+Listener: `allSettings`
+Data: `settings` (object) - all settings
+ - `hiresSliderMin` (number) - min hires distance
+ - `hiresSliderMax` (number) - max hires distance
+ - `hiresSliderDefault` (number) - default hires distance
+ - `lowresSliderMin` (number) - min lowres distance
+ - `lowresSliderMax` (number) - max lowres distance
+ - `lowresSliderDefault` (number) - default lowres distance
+ - `resolutionDefault` (number) - default resolution
+ - `version` (string) - version
+ - `maxZoomDistance` (number) - max zoom distance
+ - `minZoomDistance` (number) - min zoom distance
+```javascript
+window.addEventListener('allSettings', (event) => {
+  console.log(event.data);
+});
+```
 
 
 ## Listen Events
 
-
 **Listen to camera position update**
 
 
-Listener: `positionUpdate`
+Listener: `onPosition`
 Data: `x`, `y`, `z` (number) - camera position in blocks
 
 ```javascript
-window.addEventListener('positionUpdate', (event) => {
+window.addEventListener('onPosition', (event) => 
+  {
   console.log(event.data);
-});
+  }
+);
 ```
 
 
 **Listen to view mode change**
 
 
-Listener: `viewModeChanged`
+Listener: `onViewMode`
 Data: `mode` (string) - view mode
 
 ```javascript
-window.addEventListener('viewModeChanged', (event) => {
+window.addEventListener('onViewMode', (event) => 
+  {
   console.log(event.data);
-});
+  }
+);
 ```
 
 
 **Listen to follow player status change**
 
 
-Listener: `followingPlayerStatus`
+Listener: `onFollowingPlayerStatus`
 Data: `isFollowing` (boolean) - is following
 
 ```javascript
-window.addEventListener('followingPlayerStatus', (event) => {
+window.addEventListener('onFollowingPlayerStatus', (event) => 
+  {
   console.log(event.data);
-});
+  }
+);
 ```
 
 
 **Listen to map change**
 
 
-Listener: `mapChanged`
+Listener: `onMapChange`
 Data: `mapId` (string) - map ID
 
 ```javascript
-window.addEventListener('onMapChange', (event) => {
+window.addEventListener('onMapChange', (event) => 
+  {
   console.log(event.data);
-});
+  }
+);
 ```
 
 
 **Listen to url update**
 
 
-Listener: `urlUpdate`
+Listener: `onUrlChange`
 Data: `url` (string) - url
 
 ```javascript
-window.addEventListener('urlUpdate', (event) => {
+window.addEventListener('onUrlChange', (event) => 
+  {
   console.log(event.data);
-});
-```
-
-**Listen to map list update**
-
-Listener: `mapListUpdate`
-Data: `maps` (array) - map list
-Note: This event is triggered using `getMapList`
-
-```javascript
-window.addEventListener('mapListUpdate', (event) => {
-  console.log(event.data);
-});
+  }
+);
 ```
 
 ## Additional notes:
@@ -377,8 +579,6 @@ These examples show how to get iframe and send messages to iframe.
 Todo:
 - get marker list
 - get player list
-- get Min, Max and Default render distance
-- get Min, Max and Default low detail render distance
 - Take screenshot
 - send update map
 - send update theme

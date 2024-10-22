@@ -9,13 +9,13 @@ function handleSettingsUpdate(data) {
     const { setting, value } = data;
 
     switch (setting) {
-        case 'renderDistance':
+        case 'hiresDistance':
             // Updates the hires view distance
             bluemap.mapViewer.data.loadedHiresViewDistance = value;
             bluemap.saveUserSetting("hiresViewDistance", value);                
             bluemap.mapViewer.updateLoadedMapArea();
             break;
-        case 'renderDistanceLowDetail':
+        case 'lowresDistance':
             // Updates the lowres view distance
             bluemap.mapViewer.data.loadedLowresViewDistance = value;
             bluemap.mapViewer.updateLoadedMapArea();

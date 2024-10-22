@@ -8,7 +8,7 @@ function initializeFollowingPlayerObserver() {
     setInterval(() => {
         const isFollowing = bluemap?.mapViewer?.controlsManager?.data?.controls?.followingPlayer !== null;
         if (isFollowing !== lastFollowingStatus) {
-            sendMessage('followingPlayerStatus', { isFollowing });
+            sendMessage('onFollowingPlayerStatus', { isFollowing });
             lastFollowingStatus = isFollowing;
         }
     }, CHECK_INTERVAL);

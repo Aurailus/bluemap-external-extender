@@ -22,7 +22,7 @@ function initializeControlsObserver() {
 
         // Check for view mode changes
         if (currentViewMode !== lastViewMode) {
-            sendMessage('viewModeChanged', { mode: currentViewMode });
+            sendMessage('onViewMode', { mode: currentViewMode });
             lastViewMode = currentViewMode;
         }
 
@@ -31,7 +31,7 @@ function initializeControlsObserver() {
             Math.abs(currentPosition.x - lastPosition.x) > 1 ||
             Math.abs(currentPosition.y - lastPosition.y) > 1 ||
             Math.abs(currentPosition.z - lastPosition.z) > 1)) {
-            sendMessage('positionUpdate', {});
+            sendMessage('onPosition', {});
             lastPosition = { ...currentPosition };
         }
     }, CHECK_INTERVAL);
