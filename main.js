@@ -1,4 +1,4 @@
-let prefix = '[BlueMap/MidnightE&E]';
+let prefix = '[BlueMap/E&E]';
 
 console.log(`${prefix} Initialization started`);
 
@@ -24,11 +24,11 @@ function loadScript(src) {
 }
 
 /**
- * Initializes the MidnightExternalExtender functionality
+ * Initializes the BlueMapExternalExtender functionality
  * This function sets up observers, event listeners, and overrides default behaviors
  */
-function initializeMidnightExternalExtender() {
-    console.log(`${prefix} Initializing MidnightExternalExtender functionality`);
+function initializeBlueMapExternalExtender() {
+    console.log(`${prefix} Initializing BlueMapExternalExtender functionality`);
     // Disable zoom buttons
     bluemap.appState.controls.showZoomButtons = false;
 
@@ -49,7 +49,7 @@ function initializeMidnightExternalExtender() {
     // Override updatePageAddress function
     overrideUpdatePageAddress();
 
-    console.log(`${prefix} MidnightExternalExtender functionality initialized`);
+    console.log(`${prefix} BlueMapExternalExtender functionality initialized`);
 }
 
 /**
@@ -83,7 +83,7 @@ console.log(`${prefix} Starting to load scripts`);
 Promise.all(scriptsToLoad.map(loadScript))
     .then(() => {
         console.log(`${prefix} All scripts loaded successfully`);
-        initializeMidnightExternalExtender();
+        initializeBlueMapExternalExtender();
     })
     .catch(error => {
         console.error(`${prefix} Error loading scripts:`, error);
