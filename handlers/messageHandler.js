@@ -11,7 +11,7 @@ function handleMessage(event) {
         case 'viewMode':
             handleViewMode(data);
             break;
-        case 'toggleDayNight':
+        case 'animateSunlightStrength':
             animateSunlightStrength(data.targetValue);
             break;
         case 'updatePosition':

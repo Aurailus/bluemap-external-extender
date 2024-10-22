@@ -98,7 +98,7 @@ Options: `setting` (string) - setting name
 iframeRef.current.contentWindow.postMessage(
   { 
     type: 'updateSettings', 
-    setting: 'renderDistance', 
+    setting: 'hiresDistance', 
     value: 1000 
   }, 
   '*'
@@ -155,16 +155,16 @@ iframeRef.current.contentWindow.postMessage(
 ```
 
 
-**Toggle day/night**
+**Animate sunlight strength**
 
 
-Command: `toggleDayNight`
+Command: `animateSunlightStrength`
 Data: `targetValue` (number) - target value
 
 ```javascript
 iframeRef.current.contentWindow.postMessage(
   { 
-    type: 'toggleDayNight', 
+    type: 'animateSunlightStrength', 
     targetValue: 1 
   }, 
   '*'
