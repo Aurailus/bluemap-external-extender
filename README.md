@@ -3,26 +3,29 @@
 MidnightExternalExtender is a script that enhances the functionality of BlueMap, allowing for external control and extended features.
 
 ## API Send
-- Set camera position
+Set camera position
 Command: `updatePosition`
 Data: `x`, `y`, `z` (number) - camera position in blocks
 ```javascript
 iframeRef.current.contentWindow.postMessage({ type: 'updatePosition', x: 0, y: 64, z: 0 }, '*');
 ```
-- Switch view mode
+
+Switch view mode
 Command: `setPerspectiveView`, `setFlatView`, `setFreeFlight`
 Options: `transition` (number) - transition time in milliseconds
 Transition height: `heightTransition` (number) - transition height in blocks
 ```javascript
 iframeRef.current.contentWindow.postMessage({ type: 'viewMode', command: 'setPerspectiveView', options: { transition: 500, heightTransition: 256 } }, '*');
 ```
-- Follow player
+
+Follow player
 Command: `followPlayer`
 Data: `playerId` (string) - player ID
 ```javascript
 iframeRef.current.contentWindow.postMessage({ type: 'followPlayer', playerId: 'playerId' }, '*');
 ```
-- Update settings
+
+Update settings
 Command: `updateSettings`
 Options: `setting` (string) - setting name 
  - `renderDistance` (number) - render distance 
@@ -40,31 +43,37 @@ Value: `value` (any) - setting value
 ```javascript
 iframeRef.current.contentWindow.postMessage({ type: 'updateSettings', setting: 'renderDistance', value: 1000 }, '*');
 ```
-- Teleport to player
+
+Teleport to player
 Command: `teleportToPlayer`
 Data: `playerId` (string) - player ID
 ```javascript
 iframeRef.current.contentWindow.postMessage({ type: 'teleportToPlayer', playerId: 'playerId' }, '*');
 ```
-- Switch map
+
+Switch map
 Command: `switchMap`
 Data: `mapId` (string) - map ID
 ```javascript
 iframeRef.current.contentWindow.postMessage({ type: 'switchMap', mapId: 'mapId' }, '*');
 ```
-- Reset view
+
+Reset view
 Command: `resetView`
 ```javascript
 iframeRef.current.contentWindow.postMessage({ type: 'resetView' }, '*');
 ```
-- Toggle day/night
+
+Toggle day/night
 Command: `toggleDayNight`
 Data: `targetValue` (number) - target value
 ```javascript
 iframeRef.current.contentWindow.postMessage({ type: 'toggleDayNight', targetValue: 1 }, '*');
 ```
+
+
 ## API Receive
-- Listen to camera position update
+Listen to camera position update
 Listener: `positionUpdate`
 Data: `x`, `y`, `z` (number) - camera position in blocks
 ```javascript
@@ -72,7 +81,8 @@ window.addEventListener('positionUpdate', (event) => {
   console.log(event.data);
 });
 ```
-- Listen to view mode change
+
+Listen to view mode change
 Listener: `viewModeChanged`
 Data: `mode` (string) - view mode
 ```javascript
@@ -80,7 +90,8 @@ window.addEventListener('viewModeChanged', (event) => {
   console.log(event.data);
 });
 ```
-- Listen to follow player status change
+
+Listen to follow player status change
 Listener: `followingPlayerStatus`
 Data: `isFollowing` (boolean) - is following
 ```javascript
@@ -88,7 +99,8 @@ window.addEventListener('followingPlayerStatus', (event) => {
   console.log(event.data);
 });
 ```
-- Listen to map change
+
+Listen to map change
 Listener: `mapChanged`
 Data: `mapId` (string) - map ID
 ```javascript
@@ -96,7 +108,8 @@ window.addEventListener('onMapChange', (event) => {
   console.log(event.data);
 });
 ```
-- Listen to url update
+
+Listen to url update
 Listener: `urlUpdate`
 Data: `url` (string) - url
 ```javascript
@@ -104,6 +117,8 @@ window.addEventListener('urlUpdate', (event) => {
   console.log(event.data);
 });
 ```
+
+
 
 ## Additional notes:
  - Getting player list with `(map url)/maps/(map id)/live/players.json`
