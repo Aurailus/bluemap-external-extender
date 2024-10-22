@@ -10,7 +10,7 @@ console.log(`${prefix} Initialization started`);
 function loadScript(src) {
     return new Promise((resolve, reject) => {
         const script = document.createElement('script');
-        script.src = `js/midnight-external-extender/${src}`;
+        script.src = `js/bluemap-external-extender/${src}`;
         script.onload = () => {
             console.log(`${prefix} Script loaded: ${src}`);
             resolve();
