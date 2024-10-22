@@ -42,7 +42,7 @@ function sendMapList() {
             id: map.id,
             sorting: map.sorting
         })).sort((a, b) => a.sorting - b.sorting);
-        sendMessage('mapListUpdate', { maps: mapList });
+        sendMessage('mapListUpdate', { maps: JSON.stringify(mapList) });
     }
 }
 
@@ -143,11 +143,11 @@ function sendAllSettings() {
         maxZoomDistance: bluemap.settings.maxZoomDistance,
         minZoomDistance: bluemap.settings.minZoomDistance
     };
-    sendMessage('allSettings', { settings });
+    sendMessage('allSettings', { settings: JSON.stringify(settings) });
 }
 
 /**
- * Sends all localStorage items with the prefix "bluemap-" to the parent window
+ * Sends all localStorage items with the prefix "bluemap-" to the parent window as JSON
  * @midnight-external-extender @messaging
  */
 function sendLocalStorage() {
@@ -155,8 +155,13 @@ function sendLocalStorage() {
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         if (key.startsWith('bluemap-')) {
-            blueMapStorage[key] = localStorage.getItem(key);
+            try {
+                blueMapStorage[key] = JSON.parse(localStorage.getItem(key));
+            } catch (e) {
+                // If parsing fails, store the raw string value
+                blueMapStorage[key] = localStorage.getItem(key);
+            }
         }
     }
-    sendMessage('localStorageData', { storage: blueMapStorage });
+    sendMessage('localStorageData', { storage: JSON.stringify(blueMapStorage) });
 }

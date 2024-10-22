@@ -36,45 +36,6 @@ function handleMessage(event) {
         case 'teleportToPlayer':
             handleTeleportToPlayer(data);
             break;
-        case 'getMapList':
-            sendMapList();
-            break;
-        case 'getMinHiresDistance':
-            sendMinHiresDistance();
-            break;
-        case 'getMaxHiresDistance':
-            sendMaxHiresDistance();
-            break;
-        case 'getDefaultHiresDistance':
-            sendDefaultHiresDistance();
-            break;
-        case 'getMinLowresDistance':
-            sendMinLowresDistance();
-            break;
-        case 'getMaxLowresDistance':
-            sendMaxLowresDistance();
-            break;
-        case 'getDefaultLowresDistance':
-            sendDefaultLowresDistance();
-            break;
-        case 'getDefaultResolution':
-            sendDefaultResolution();
-            break;
-        case 'getVersion':
-            sendVersion();
-            break;
-        case 'getMaxZoomDistance':
-            sendMaxZoomDistance();
-            break;
-        case 'getMinZoomDistance':
-            sendMinZoomDistance();
-            break;
-        case 'getAllSettings':
-            sendAllSettings();
-            break;
-        case 'getLocalStorage':
-            sendLocalStorage();
-            break;
     }
 }
 

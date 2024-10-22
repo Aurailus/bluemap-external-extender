@@ -43,6 +43,15 @@ function initializeBlueMapExternalExtender() {
     // Send initial sunlight strength
     sendSunlightStrength();
 
+    // Send localStorage data
+    sendLocalStorage();
+
+    // Send map list
+    sendMapList();
+    
+    // Send settings
+    sendAllSettings();
+
     // Hide control bar by default
     toggleControlBarVisibility(true);
 

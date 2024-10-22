@@ -171,257 +171,6 @@ iframeRef.current.contentWindow.postMessage(
 );
 ```
 
-**Get map list and listen to map list update**
-
-Command: `getMapList`
-Response: `mapListUpdate`
-Data: `maps` (array) - map list
-
-```javascript
-iframeRef.current.contentWindow.postMessage(
-  { 
-    type: 'getMapList' 
-  }, 
-  '*'
-);
-```
-
-Listener: `mapListUpdate`
-Data: `maps` (array) - map list
-Note: This event is triggered using `getMapList`
-
-```javascript
-window.addEventListener('mapListUpdate', (event) => 
-  {
-  console.log(event.data);
-  }
-);
-```
-
-
-**Get min hires distance and listen to min hires distance update**
-
-Command: `getMinHiresDistance`
-Response: `minHiresDistance`
-```javascript
-iframeRef.current.contentWindow.postMessage(
-  {
-    type: 'getMinHiresDistance'
-  },
-''
-);
-```
-
-Listener: `minHiresDistance`
-Data: `value` (number) - min hires distance
-```javascript
-window.addEventListener('minHiresDistance', (event) => 
-  {
-  console.log(event.data);
-  }
-);
-```
-
-
-**Get max hires distance and listen to max hires distance update**
-
-Command: `getMaxHiresDistance`
-Response: `maxHiresDistance`
-```javascript
-iframeRef.current.contentWindow.postMessage(
-  {
-    type: 'getMaxHiresDistance'
-  },
-''
-);
-```
-
-Listener: `maxHiresDistance`
-Data: `value` (number) - max hires distance
-```javascript
-window.addEventListener('maxHiresDistance', (event) => 
-  {
-  console.log(event.data);
-  }
-);
-```
-
-
-**Get default hires distance and listen to default hires distance update**
-
-Command: `getDefaultHiresDistance`
-Response: `defaultHiresDistance`
-```javascript
-iframeRef.current.contentWindow.postMessage(
-  {
-    type: 'getDefaultHiresDistance'
-  },
-''
-);
-```
-
-Listener: `defaultHiresDistance`
-Data: `value` (number) - default hires distance
-```javascript
-window.addEventListener('defaultHiresDistance', (event) => 
-  {
-  console.log(event.data);
-  }
-);
-```
-
-
-**Get min lowres distance and listen to min lowres distance update**
-
-Command: `getMinLowresDistance`
-Response: `minLowresDistance`
-```javascript
-iframeRef.current.contentWindow.postMessage(
-  {
-    type: 'getMinLowresDistance'
-  },
-''
-);
-```
-
-Listener: `minLowresDistance`
-Data: `value` (number) - min lowres distance
-```javascript
-window.addEventListener('minLowresDistance', (event) => {
-  console.log(event.data);
-});
-```
-
-**Get max lowres distance and listen to max lowres distance update**
-
-Command: `getMaxLowresDistance`
-Response: `maxLowresDistance`
-```javascript
-iframeRef.current.contentWindow.postMessage(
-  {
-    type: 'getMaxLowresDistance'
-  },
-''
-);
-```
-
-Listener: `maxLowresDistance`
-Data: `value` (number) - max lowres distance
-```javascript
-window.addEventListener('maxLowresDistance', (event) => {
-  console.log(event.data);
-});
-```
-
-**Get default lowres distance and listen to default lowres distance update**
-
-Command: `getDefaultLowresDistance`
-Response: `defaultLowresDistance`
-```javascript
-iframeRef.current.contentWindow.postMessage(
-  {
-    type: 'getDefaultLowresDistance'
-  },
-''
-);
-```
-
-Listener: `defaultLowresDistance`
-Data: `value` (number) - default lowres distance
-```javascript
-window.addEventListener('defaultLowresDistance', (event) => 
-  {
-  console.log(event.data);
-  }
-);
-```
-
-**Get default resolution and listen to default resolution update**
-
-Command: `getDefaultResolution`
-Response: `defaultResolution`
-```javascript
-iframeRef.current.contentWindow.postMessage(
-  {
-    type: 'getDefaultResolution'
-  },
-''
-);
-```
-
-Listener: `defaultResolution`
-Data: `value` (number) - default resolution
-```javascript
-window.addEventListener('defaultResolution', (event) => {
-  console.log(event.data);
-});
-```
-
-**Get version and listen to version update**
-
-Command: `getVersion`
-Response: `version`
-```javascript
-iframeRef.current.contentWindow.postMessage(
-  {
-    type: 'getVersion'
-  },
-''
-);
-```
-
-**Get all settings and listen to all settings update**
-
-Command: `getAllSettings`
-Response: `allSettings`
-```javascript
-iframeRef.current.contentWindow.postMessage(
-  {
-    type: 'getAllSettings'
-  },
-  '*'
-);
-```
-
-Listener: `allSettings`
-Data: `settings` (object) - all settings
- - `hiresSliderMin` (number) - min hires distance
- - `hiresSliderMax` (number) - max hires distance
- - `hiresSliderDefault` (number) - default hires distance
- - `lowresSliderMin` (number) - min lowres distance
- - `lowresSliderMax` (number) - max lowres distance
- - `lowresSliderDefault` (number) - default lowres distance
- - `resolutionDefault` (number) - default resolution
- - `version` (string) - version
- - `maxZoomDistance` (number) - max zoom distance
- - `minZoomDistance` (number) - min zoom distance
-```javascript
-window.addEventListener('allSettings', (event) => {
-  console.log(event.data);
-});
-```
-
-**Get localStorage and listen to localStorage update**
-
-Command: `getLocalStorage`
-Response: `localStorageData`
-```javascript
-iframeRef.current.contentWindow.postMessage(
-  {
-    type: 'getLocalStorage'
-  },
-  '*'
-);
-```
-
-Listener: `localStorageData`
-Data: `storage` (object) - localStorage data
-```javascript
-window.addEventListener('localStorageData', (event) => {
-  console.log(event.data);
-});
-```
-
 ## Listen Events
 
 **Listen to camera position update**
@@ -508,6 +257,59 @@ window.addEventListener('onSunlightStrength', (event) => {
   console.log(event.data);
 });
 ```
+
+**Listen to map list update (FIRST TIME ONLY)**
+
+Listener: `mapListUpdate`
+Data: `mapList` (string) - map list
+```javascript
+window.addEventListener('mapListUpdate', (event) => {
+  console.log(event.data);
+});
+```
+
+**Listen to all settings update (FIRST TIME ONLY)**
+
+Listener: `allSettings`
+Data: `settings` (string) - settings
+ - `hiresSliderMin` (number) - hires slider min
+ - `hiresSliderMax` (number) - hires slider max
+ - `hiresSliderDefault` (number) - hires slider default
+ - `lowresSliderMin` (number) - lowres slider min
+ - `lowresSliderMax` (number) - lowres slider max
+ - `lowresSliderDefault` (number) - lowres slider default
+ - `resolutionDefault` (number) - resolution default
+ - `version` (string) - version
+ - `maxZoomDistance` (number) - max zoom distance
+ - `minZoomDistance` (number) - min zoom distance
+```javascript
+window.addEventListener('allSettings', (event) => {
+  console.log(event.data);
+});
+```
+
+**Listen to localStorage update (FIRST TIME ONLY)**
+Listener: `localStorageData`
+Data: `storage` (string) - localStorage data
+ - `bluemap-superSampling` (number) - super sampling setting
+ - `bluemap-mouseSensitivity` (number) - mouse sensitivity setting
+ - `bluemap-hiresViewDistance` (number) - high resolution view distance
+ - `bluemap-screenshotClipboard` (boolean) - screenshot to clipboard setting
+ - `bluemap-pauseTileLoading` (boolean) - pause tile loading setting
+ - `bluemap-theme` (string | null) - theme setting
+ - `bluemap-lang` (string) - language setting
+ - `bluemap-lowresViewDistance` (number) - low resolution view distance
+ - `bluemap-tileCacheHash` (number) - tile cache hash
+ - `bluemap-chunkBorders` (boolean) - chunk borders display setting
+ - `bluemap-resetSettings` (boolean) - reset settings flag
+ - `bluemap-debug` (boolean) - debug mode setting
+ - `bluemap-showZoomButtons` (boolean) - show zoom buttons setting
+ - `bluemap-invertMouse` (boolean) - invert mouse setting
+```javascript
+window.addEventListener('localStorageData', (event) => {
+  console.log(event.data);
+});
+``` 
 
 ## Additional notes:
 
