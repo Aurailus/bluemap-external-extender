@@ -145,3 +145,18 @@ function sendAllSettings() {
     };
     sendMessage('allSettings', { settings });
 }
+
+/**
+ * Sends all localStorage items with the prefix "bluemap-" to the parent window
+ * @midnight-external-extender @messaging
+ */
+function sendLocalStorage() {
+    const blueMapStorage = {};
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith('bluemap-')) {
+            blueMapStorage[key] = localStorage.getItem(key);
+        }
+    }
+    sendMessage('localStorageData', { storage: blueMapStorage });
+}

@@ -72,6 +72,9 @@ function handleMessage(event) {
         case 'getAllSettings':
             sendAllSettings();
             break;
+        case 'getLocalStorage':
+            sendLocalStorage();
+            break;
     }
 }
 
@@ -138,3 +141,4 @@ function handleTeleportToPlayer(data) {
         }
     }
 }
+

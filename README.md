@@ -401,6 +401,26 @@ window.addEventListener('allSettings', (event) => {
 });
 ```
 
+**Get localStorage and listen to localStorage update**
+
+Command: `getLocalStorage`
+Response: `localStorageData`
+```javascript
+iframeRef.current.contentWindow.postMessage(
+  {
+    type: 'getLocalStorage'
+  },
+  '*'
+);
+```
+
+Listener: `localStorageData`
+Data: `storage` (object) - localStorage data
+```javascript
+window.addEventListener('localStorageData', (event) => {
+  console.log(event.data);
+});
+```
 
 ## Listen Events
 
