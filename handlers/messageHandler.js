@@ -27,8 +27,8 @@ function handleMessage(event) {
                 bluemap.resetCamera();
             }
             break;
-        case 'playerClick':
-            handlePlayerClick(data);
+        case 'followPlayer':
+            handleFollowPlayer(data);
             break;
         case 'updateSettings':
             handleSettingsUpdate(data);
@@ -62,13 +62,13 @@ function handleViewMode(data) {
 }
 
 /**
- * Handles player click events
- * @param {Object} data - The player click data
+ * Handles following a player
+ * @param {Object} data - The follow player data
  * @param {boolean} data.follow - Whether to follow the player or not
  * @param {string} data.playerId - The ID of the player to follow
  * @midnight-external-extender @handlers
  */
-function handlePlayerClick(data) {
+function handleFollowPlayer(data) {
     if (data.follow) {
         const playerMarker = bluemap.playerMarkerManager.getPlayerMarker(data.playerId);
         bluemap.mapViewer.controlsManager.controls.followPlayerMarker(playerMarker);
