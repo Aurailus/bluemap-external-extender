@@ -61,7 +61,7 @@ function overrideUpdatePageAddress() {
     bluemap.updatePageAddress = function(...args) {
         const result = originalUpdatePageAddress.apply(this, args);
         const currentURL = window.location.href;
-        sendMessage('urlUpdate', { url: currentURL });
+        sendMessage('onUrlChange', { url: currentURL });
         return result;
     };
     console.log(`${prefix} updatePageAddress function overridden`);
