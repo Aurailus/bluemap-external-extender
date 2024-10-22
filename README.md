@@ -1,6 +1,6 @@
-# MidnightExternalExtender
+# Bluemap External Extender
 
-MidnightExternalExtender is a script that enhances the functionality of BlueMap, allowing for external control and extended features.
+Bluemap External Extender is a script that enhances the functionality of BlueMap, allowing for external control and extended features.
 
 ## Installation
 
