@@ -3,11 +3,13 @@
 MidnightExternalExtender is a script that enhances the functionality of BlueMap, allowing for external control and extended features.
 
 ## Installation
+
 1. Click the "Code" button and select "Download ZIP".
 2. Extract the ZIP file to your BlueMap web folder (e.g., `bluemap/web/js/`).
 3. Rename the extracted folder to `midnight-external-extender`.
 4. Edit the BlueMap Web configuration file located at `plugins/BlueMap/webapp.conf`.
 5. Add the MidnightExternalExtender script to the `scripts` array:
+
 ```
 scripts: [
   "js/midnight-external-extender/main.js"
@@ -16,11 +18,14 @@ scripts: [
 
 6. Save the configuration file and restart your server.
 
-
 ## API Send
-Set camera position
+
+**Set camera position**
+
+
 Command: `updatePosition`
 Data: `x`, `y`, `z` (number) - camera position in blocks
+
 ```javascript
 iframeRef.current.contentWindow.postMessage(
   { 
@@ -33,10 +38,14 @@ iframeRef.current.contentWindow.postMessage(
 );
 ```
 
-Switch view mode
+
+**Switch view mode**
+
+
 Command: `setPerspectiveView`, `setFlatView`, `setFreeFlight`
 Options: `transition` (number) - transition time in milliseconds
 Transition height: `heightTransition` (number) - transition height in blocks
+
 ```javascript
 iframeRef.current.contentWindow.postMessage(
   { 
@@ -48,9 +57,13 @@ iframeRef.current.contentWindow.postMessage(
 );
 ```
 
-Follow player
+
+**Follow player**
+
+
 Command: `followPlayer`
 Data: `playerId` (string) - player ID
+
 ```javascript
 iframeRef.current.contentWindow.postMessage(
   { 
@@ -61,21 +74,26 @@ iframeRef.current.contentWindow.postMessage(
 );
 ```
 
-Update settings
+
+**Update settings**
+
+
 Command: `updateSettings`
-Options: `setting` (string) - setting name 
- - `renderDistance` (number) - render distance 
- - `renderDistanceLowDetail` (number) - low detail render distance
- - `sunlightStrength` (number) - sunlight strength
- - `ambientLight` (number) - ambient light strength
- - `pauseTileLoading` (boolean) - pause tile loading
- - `invertMouse` (boolean) - invert mouse
- - `mouseSensitivity` (number) - mouse sensitivity
- - `showChunkBorders` (boolean) - show chunk borders
- - `showDebug` (boolean) - show debug information
- - `superSampling` (number) - super sampling value
- - `resetSettings` (boolean) - reset all settings
-Value: `value` (any) - setting value
+Options: `setting` (string) - setting name
+
+- `renderDistance` (number) - render distance
+- `renderDistanceLowDetail` (number) - low detail render distance
+- `sunlightStrength` (number) - sunlight strength
+- `ambientLight` (number) - ambient light strength
+- `pauseTileLoading` (boolean) - pause tile loading
+- `invertMouse` (boolean) - invert mouse
+- `mouseSensitivity` (number) - mouse sensitivity
+- `showChunkBorders` (boolean) - show chunk borders
+- `showDebug` (boolean) - show debug information
+- `superSampling` (number) - super sampling value
+- `resetSettings` (boolean) - reset all settings
+  Value: `value` (any) - setting value
+
 ```javascript
 iframeRef.current.contentWindow.postMessage(
   { 
@@ -87,9 +105,13 @@ iframeRef.current.contentWindow.postMessage(
 );
 ```
 
-Teleport to player
+
+**Teleport to player**
+
+
 Command: `teleportToPlayer`
 Data: `playerId` (string) - player ID
+
 ```javascript
 iframeRef.current.contentWindow.postMessage(
   { 
@@ -100,9 +122,13 @@ iframeRef.current.contentWindow.postMessage(
 );
 ```
 
-Switch map
+
+**Switch map**
+
+
 Command: `switchMap`
 Data: `mapId` (string) - map ID
+
 ```javascript
 iframeRef.current.contentWindow.postMessage(
   { 
@@ -113,8 +139,12 @@ iframeRef.current.contentWindow.postMessage(
 );
 ```
 
-Reset view
+
+**Reset view**
+
+
 Command: `resetView`
+
 ```javascript
 iframeRef.current.contentWindow.postMessage(
   { 
@@ -124,9 +154,13 @@ iframeRef.current.contentWindow.postMessage(
 );
 ```
 
-Toggle day/night
+
+**Toggle day/night**
+
+
 Command: `toggleDayNight`
 Data: `targetValue` (number) - target value
+
 ```javascript
 iframeRef.current.contentWindow.postMessage(
   { 
@@ -137,58 +171,78 @@ iframeRef.current.contentWindow.postMessage(
 );
 ```
 
-
 ## API Receive
-Listen to camera position update
+
+
+**Listen to camera position update**
+
+
 Listener: `positionUpdate`
 Data: `x`, `y`, `z` (number) - camera position in blocks
+
 ```javascript
 window.addEventListener('positionUpdate', (event) => {
   console.log(event.data);
 });
 ```
 
-Listen to view mode change
+
+**Listen to view mode change**
+
+
 Listener: `viewModeChanged`
 Data: `mode` (string) - view mode
+
 ```javascript
 window.addEventListener('viewModeChanged', (event) => {
   console.log(event.data);
 });
 ```
 
-Listen to follow player status change
+
+**Listen to follow player status change**
+
+
 Listener: `followingPlayerStatus`
 Data: `isFollowing` (boolean) - is following
+
 ```javascript
 window.addEventListener('followingPlayerStatus', (event) => {
   console.log(event.data);
 });
 ```
 
-Listen to map change
+
+**Listen to map change**
+
+
 Listener: `mapChanged`
 Data: `mapId` (string) - map ID
+
 ```javascript
 window.addEventListener('onMapChange', (event) => {
   console.log(event.data);
 });
 ```
 
-Listen to url update
+
+**Listen to url update**
+
+
 Listener: `urlUpdate`
 Data: `url` (string) - url
+
 ```javascript
 window.addEventListener('urlUpdate', (event) => {
   console.log(event.data);
 });
 ```
 
-
-
 ## Additional notes:
- - Getting player list with `(map url)/maps/(map id)/live/players.json`
-Get player list:
+
+- Getting player list with `(map url)/maps/(map id)/live/players.json`
+  Get player list:
+
 ```javascript
 const mapId = 'map id';
 const mapUrl = 'https://example.com';
@@ -202,7 +256,9 @@ const fetchPlayers = async () => {
   }
 };
 ```
-Response: 
+
+Response:
+
 ```json
 {
   "players": [
@@ -226,6 +282,7 @@ Response:
 ```
 
 Todo:
+
 - get map id list
 - get marker list
 - get player list
