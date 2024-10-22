@@ -200,6 +200,7 @@ window.addEventListener('mapListUpdate', (event) =>
 
 
 **Get min hires distance and listen to min hires distance update**
+
 Command: `getMinHiresDistance`
 Response: `minHiresDistance`
 ```javascript
@@ -223,6 +224,7 @@ window.addEventListener('minHiresDistance', (event) =>
 
 
 **Get max hires distance and listen to max hires distance update**
+
 Command: `getMaxHiresDistance`
 Response: `maxHiresDistance`
 ```javascript
@@ -246,6 +248,7 @@ window.addEventListener('maxHiresDistance', (event) =>
 
 
 **Get default hires distance and listen to default hires distance update**
+
 Command: `getDefaultHiresDistance`
 Response: `defaultHiresDistance`
 ```javascript
@@ -269,6 +272,7 @@ window.addEventListener('defaultHiresDistance', (event) =>
 
 
 **Get min lowres distance and listen to min lowres distance update**
+
 Command: `getMinLowresDistance`
 Response: `minLowresDistance`
 ```javascript
@@ -289,6 +293,7 @@ window.addEventListener('minLowresDistance', (event) => {
 ```
 
 **Get max lowres distance and listen to max lowres distance update**
+
 Command: `getMaxLowresDistance`
 Response: `maxLowresDistance`
 ```javascript
@@ -309,6 +314,7 @@ window.addEventListener('maxLowresDistance', (event) => {
 ```
 
 **Get default lowres distance and listen to default lowres distance update**
+
 Command: `getDefaultLowresDistance`
 Response: `defaultLowresDistance`
 ```javascript
@@ -331,6 +337,7 @@ window.addEventListener('defaultLowresDistance', (event) =>
 ```
 
 **Get default resolution and listen to default resolution update**
+
 Command: `getDefaultResolution`
 Response: `defaultResolution`
 ```javascript
@@ -351,6 +358,7 @@ window.addEventListener('defaultResolution', (event) => {
 ```
 
 **Get version and listen to version update**
+
 Command: `getVersion`
 Response: `version`
 ```javascript
@@ -360,9 +368,10 @@ iframeRef.current.contentWindow.postMessage(
   },
 ''
 );
-
+```
 
 **Get all settings and listen to all settings update**
+
 Command: `getAllSettings`
 Response: `allSettings`
 ```javascript
@@ -370,7 +379,7 @@ iframeRef.current.contentWindow.postMessage(
   {
     type: 'getAllSettings'
   },
-''
+  '*'
 );
 ```
 
