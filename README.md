@@ -281,8 +281,71 @@ Response:
 }
 ```
 
-Todo:
 
+## Getting iframeRef Examples
+
+### React Example
+```jsx
+import React, { useRef, useEffect } from 'react';
+function BlueMapComponent() {
+  const iframeRef = useRef(null);
+  useEffect(() => {
+    if (iframeRef.current) {
+      // Example: Set camera position
+      iframeRef.current.contentWindow.postMessage(
+        {
+          type: 'updatePosition',
+          x: 0,
+          y: 64,
+          z: 0
+        },
+        ''
+      );
+    }
+  }, []);
+  return (
+    <iframe
+      ref={iframeRef}
+      src="https://example.com"
+      title="BlueMap"
+      width="100%"
+      height="600px"
+    />
+  );
+}
+
+export default BlueMapComponent;
+```
+### Normal JavaScript HTML Example
+```html
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlueMap Example</title>
+</head>
+<body>
+  <iframe id="bluemap-iframe" src="https://example.com" width="100%" height="600px"></iframe>
+  <script>
+    const iframeRef = document.getElementById('bluemap-iframe');
+    // Wait for the iframe to load
+    iframeRef.onload = function() {
+      // Example: Set camera position
+      iframeRef.contentWindow.postMessage(
+        {
+          type: 'updatePosition',
+          x: 0,
+          y: 64,
+          z: 0
+        },
+        ''
+      );
+    };
+  </script>
+</body>
+```
+These examples show how to get iframe and send messages to iframe.
+
+Todo:
 - get map id list
 - get marker list
 - get player list
