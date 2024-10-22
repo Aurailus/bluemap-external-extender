@@ -2,6 +2,21 @@
 
 MidnightExternalExtender is a script that enhances the functionality of BlueMap, allowing for external control and extended features.
 
+## Installation
+1. Click the "Code" button and select "Download ZIP".
+2. Extract the ZIP file to your BlueMap web folder (e.g., `bluemap/web/js/`).
+3. Rename the extracted folder to `midnight-external-extender`.
+4. Edit the BlueMap Web configuration file located at `plugins/BlueMap/webapp.conf`.
+5. Add the MidnightExternalExtender script to the `scripts` array:
+```
+scripts: [
+  "js/midnight-external-extender/main.js"
+]
+```
+
+6. Save the configuration file and restart your server.
+
+
 ## API Send
 Set camera position
 Command: `updatePosition`
