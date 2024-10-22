@@ -36,6 +36,9 @@ function handleMessage(event) {
         case 'teleportToPlayer':
             handleTeleportToPlayer(data);
             break;
+        case 'getMapList':
+            sendMapList();
+            break;
     }
 }
 

@@ -18,7 +18,7 @@ scripts: [
 
 6. Save the configuration file and restart your server.
 
-## API Send
+## Post Messages
 
 **Set camera position**
 
@@ -171,7 +171,24 @@ iframeRef.current.contentWindow.postMessage(
 );
 ```
 
-## API Receive
+**Get map list**
+
+Command: `getMapList`
+Response: `mapListUpdate`
+Data: `maps` (array) - map list
+
+```javascript
+iframeRef.current.contentWindow.postMessage(
+  { 
+    type: 'getMapList' 
+  }, 
+  '*'
+);
+```
+
+
+
+## Listen Events
 
 
 **Listen to camera position update**
@@ -234,6 +251,18 @@ Data: `url` (string) - url
 
 ```javascript
 window.addEventListener('urlUpdate', (event) => {
+  console.log(event.data);
+});
+```
+
+**Listen to map list update**
+
+Listener: `mapListUpdate`
+Data: `maps` (array) - map list
+Note: This event is triggered using `getMapList`
+
+```javascript
+window.addEventListener('mapListUpdate', (event) => {
   console.log(event.data);
 });
 ```
@@ -346,7 +375,6 @@ export default BlueMapComponent;
 These examples show how to get iframe and send messages to iframe.
 
 Todo:
-- get map id list
 - get marker list
 - get player list
 - get Min, Max and Default render distance

@@ -31,3 +31,18 @@ function sendSunlightStrength() {
         sendMessage('sunlightStrengthChanged', { value: sunlightStrength });
     }
 }
+
+/**
+ * Sends the current map list to the parent window
+ * @midnight-external-extender @messaging
+ */
+function sendMapList() {
+    if (bluemap && bluemap.appState && bluemap.appState.maps) {
+        const mapList = bluemap.appState.maps.map(map => ({
+            id: map.id,
+            sorting: map.sorting
+        })).sort((a, b) => a.sorting - b.sorting);
+        sendMessage('mapListUpdate', { maps: mapList });
+    }
+}
+
