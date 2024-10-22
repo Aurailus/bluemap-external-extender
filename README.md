@@ -7,7 +7,15 @@ Set camera position
 Command: `updatePosition`
 Data: `x`, `y`, `z` (number) - camera position in blocks
 ```javascript
-iframeRef.current.contentWindow.postMessage({ type: 'updatePosition', x: 0, y: 64, z: 0 }, '*');
+iframeRef.current.contentWindow.postMessage(
+  { 
+    type: 'updatePosition', 
+    x: 0, 
+    y: 64, 
+    z: 0 
+  }, 
+  '*'
+);
 ```
 
 Switch view mode
@@ -15,14 +23,27 @@ Command: `setPerspectiveView`, `setFlatView`, `setFreeFlight`
 Options: `transition` (number) - transition time in milliseconds
 Transition height: `heightTransition` (number) - transition height in blocks
 ```javascript
-iframeRef.current.contentWindow.postMessage({ type: 'viewMode', command: 'setPerspectiveView', options: { transition: 500, heightTransition: 256 } }, '*');
+iframeRef.current.contentWindow.postMessage(
+  { 
+    type: 'viewMode', 
+    command: 'setPerspectiveView', 
+    options: { transition: 500, heightTransition: 256 } 
+  }, 
+  '*'
+);
 ```
 
 Follow player
 Command: `followPlayer`
 Data: `playerId` (string) - player ID
 ```javascript
-iframeRef.current.contentWindow.postMessage({ type: 'followPlayer', playerId: 'playerId' }, '*');
+iframeRef.current.contentWindow.postMessage(
+  { 
+    type: 'followPlayer', 
+    playerId: 'playerId' 
+  }, 
+  '*'
+);
 ```
 
 Update settings
@@ -41,34 +62,64 @@ Options: `setting` (string) - setting name
  - `resetSettings` (boolean) - reset all settings
 Value: `value` (any) - setting value
 ```javascript
-iframeRef.current.contentWindow.postMessage({ type: 'updateSettings', setting: 'renderDistance', value: 1000 }, '*');
+iframeRef.current.contentWindow.postMessage(
+  { 
+    type: 'updateSettings', 
+    setting: 'renderDistance', 
+    value: 1000 
+  }, 
+  '*'
+);
 ```
 
 Teleport to player
 Command: `teleportToPlayer`
 Data: `playerId` (string) - player ID
 ```javascript
-iframeRef.current.contentWindow.postMessage({ type: 'teleportToPlayer', playerId: 'playerId' }, '*');
+iframeRef.current.contentWindow.postMessage(
+  { 
+    type: 'teleportToPlayer', 
+    playerId: 'playerId' 
+  }, 
+  '*'
+);
 ```
 
 Switch map
 Command: `switchMap`
 Data: `mapId` (string) - map ID
 ```javascript
-iframeRef.current.contentWindow.postMessage({ type: 'switchMap', mapId: 'mapId' }, '*');
+iframeRef.current.contentWindow.postMessage(
+  { 
+    type: 'switchMap', 
+    mapId: 'mapId' 
+  }, 
+  '*'
+);
 ```
 
 Reset view
 Command: `resetView`
 ```javascript
-iframeRef.current.contentWindow.postMessage({ type: 'resetView' }, '*');
+iframeRef.current.contentWindow.postMessage(
+  { 
+    type: 'resetView' 
+  }, 
+  '*'
+);
 ```
 
 Toggle day/night
 Command: `toggleDayNight`
 Data: `targetValue` (number) - target value
 ```javascript
-iframeRef.current.contentWindow.postMessage({ type: 'toggleDayNight', targetValue: 1 }, '*');
+iframeRef.current.contentWindow.postMessage(
+  { 
+    type: 'toggleDayNight', 
+    targetValue: 1 
+  }, 
+  '*'
+);
 ```
 
 
