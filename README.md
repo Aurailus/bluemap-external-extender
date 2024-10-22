@@ -478,6 +478,17 @@ window.addEventListener('onUrlChange', (event) =>
 );
 ```
 
+**Listen to sunlight strength update (FIRST TIME ONLY)**
+
+Listener: `onSunlightStrength`
+Data: `value` (number) - sunlight strength
+
+```javascript
+window.addEventListener('onSunlightStrength', (event) => {
+  console.log(event.data);
+});
+```
+
 ## Additional notes:
 
 - Getting player list with `(map url)/maps/(map id)/live/players.json`
