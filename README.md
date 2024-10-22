@@ -8,7 +8,7 @@ Bluemap External Extender is a script that enhances the functionality of BlueMap
 2. Extract the ZIP file to your BlueMap web folder (e.g., `bluemap/web/js/`).
 3. Rename the extracted folder to `bluemap-external-extender`.
 4. Edit the BlueMap Web configuration file located at `plugins/BlueMap/webapp.conf`.
-5. Add the MidnightExternalExtender script to the `scripts` array:
+5. Add the Bluemap External Extender script to the `scripts` array:
 
 ```
 scripts: [
