@@ -12,7 +12,7 @@ function handleMessage(event) {
             handleViewMode(data);
             break;
         case 'animateSunlightStrength':
-            animateSunlightStrength(data.targetValue);
+            animateSunlight(data.targetValue);
             break;
         case 'updatePosition':
             updatePosition(data.x, data.y, data.z);

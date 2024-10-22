@@ -8,7 +8,7 @@ let isAnimatingSunlight = false;
  * @param {number} targetValue - The target sunlight strength value
  * @midnight-external-extender @utils
  */
-function animateSunlightStrength(targetValue) {
+function animateSunlight(targetValue) {
     const sunlightStrengthUniform = bluemap?.mapViewer?.data?.uniforms?.sunlightStrength;
     if (!sunlightStrengthUniform) {
         console.error('BlueMap or its properties are not available');

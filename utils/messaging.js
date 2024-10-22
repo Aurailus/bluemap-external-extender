@@ -28,7 +28,7 @@ function sendMessage(type, data) {
 function sendSunlightStrength() {
     const sunlightStrength = bluemap?.mapViewer?.data?.uniforms?.sunlightStrength?.value;
     if (sunlightStrength !== undefined) {
-        sendMessage('sunlightStrengthChanged', { value: sunlightStrength });
+        sendMessage('onSunlightStrength', { value: sunlightStrength });
     }
 }
 
