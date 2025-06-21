@@ -1,9 +1,11 @@
 # Bluemap External Extender
 
 Bluemap External Extender is a script that enhances the functionality of BlueMap, allowing for external control and extended features.
-## You can create new entire ui on parent site iframe on like example image
-![image](https://github.com/user-attachments/assets/e28a2019-cf64-4d5f-9747-265576fb218a)
-![image](https://github.com/user-attachments/assets/974386d5-0319-4443-8bea-93a9904a27d5)
+## You can create new entire ui on parent site iframe on like example image 
+demo: [https://mntale.fun/map](https://mntale.fun/map)
+![image](https://github.com/user-attachments/assets/403ae5e6-3803-480d-9f5f-8f07a4e7a2f0)
+![image](https://github.com/user-attachments/assets/9b84a3cb-ae98-4214-83ed-b584c29561e0)
+![image](https://github.com/user-attachments/assets/d252d4fb-f435-4982-9cf4-5d9c78122157)
 
 ## Installation
 
