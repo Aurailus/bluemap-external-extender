@@ -503,11 +503,3 @@ export default BlueMapComponent;
 </body>
 ```
 These examples show how to get iframe and send messages to iframe.
-
-Todo:
-- get marker list
-- get player list
-- Take screenshot
-- send update map
-- send update theme
-- toggle copy screenshot to clipboard
