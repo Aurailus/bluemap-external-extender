@@ -36,6 +36,46 @@ function handleMessage(event) {
         case 'teleportToPlayer':
             handleTeleportToPlayer(data);
             break;
+        case 'getMarkers':
+            sendMarkers();
+            break;
+        case 'toggleMarkerSet': {
+            // Find the real MarkerSet instance by id
+            function findMarkerSet(markerSet, id) {
+                if (markerSet.data && markerSet.data.id === id) return markerSet;
+                if (markerSet.markerSets && markerSet.markerSets.size) {
+                    for (const childSet of markerSet.markerSets.values()) {
+                        const found = findMarkerSet(childSet, id);
+                        if (found) return found;
+                    }
+                }
+                return null;
+            }
+            const rootMarkerSet = bluemap?.mapViewer?.markers;
+            const markerSet = rootMarkerSet ? findMarkerSet(rootMarkerSet, data.markerSetId) : null;
+            if (markerSet && markerSet.data.toggleable) {
+                markerSet.visible = !markerSet.visible; // updates both scene and data
+                if (typeof markerSet.data.saveState === 'function') markerSet.data.saveState();
+            }
+            sendMarkers();
+            break;
+        }
+        case 'getPlayerList':
+            sendPlayerList();
+            break;
+        case 'takeScreenshot':
+            sendScreenshot();
+            break;
+        case 'updateMap':
+            if (bluemap.updateMap) {
+                bluemap.updateMap();
+            }
+            break;
+        case 'updateTheme':
+            if (bluemap.setTheme && data.theme) {
+                bluemap.setTheme(data.theme);
+            }
+            break;
     }
 }
 

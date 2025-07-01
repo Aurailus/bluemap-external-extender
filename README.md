@@ -176,6 +176,52 @@ iframeRef.current.contentWindow.postMessage(
 );
 ```
 
+**Get marker list**
+
+Command: `getMarkers`
+
+```javascript
+iframeRef.current.contentWindow.postMessage(
+  { type: 'getMarkers' },
+  '*'
+);
+```
+
+**Toggle marker set visibility**
+
+Command: `toggleMarkerSet`
+Data: `markerSetId` (string) - marker set id
+
+```javascript
+iframeRef.current.contentWindow.postMessage(
+  { type: 'toggleMarkerSet', markerSetId: 'markerSetId' },
+  '*'
+);
+```
+
+**Get player list**
+
+Command: `getPlayerList`
+
+```javascript
+iframeRef.current.contentWindow.postMessage(
+  { type: 'getPlayerList' },
+  '*'
+);
+```
+
+**Listen to player list update**
+
+Listener: `playerListUpdate`
+Data: `players` (string) - player list
+
+```javascript
+window.addEventListener('playerListUpdate', (event) => {
+  const players = JSON.parse(event.data.players);
+  console.log(players);
+});
+```
+
 ## Listen Events
 
 **Listen to camera position update**
@@ -315,6 +361,41 @@ window.addEventListener('localStorageData', (event) => {
   console.log(event.data);
 });
 ``` 
+
+**Listen to marker list update**
+
+Listener: `markerListUpdate`
+Data: `markers` (string) - marker set and marker data
+
+```javascript
+window.addEventListener('markerListUpdate', (event) => {
+  const markers = JSON.parse(event.data.markers);
+  console.log(markers);
+});
+```
+
+**Update map (reload current map)**
+
+Command: `updateMap`
+
+```javascript
+iframeRef.current.contentWindow.postMessage(
+  { type: 'updateMap' },
+  '*'
+);
+```
+
+**Update theme**
+
+Command: `updateTheme`
+Data: `theme` (string) - theme name ('light', 'dark', 'contrast', etc)
+
+```javascript
+iframeRef.current.contentWindow.postMessage(
+  { type: 'updateTheme', theme: 'dark' },
+  '*'
+);
+```
 
 ## Additional notes:
 

@@ -165,3 +165,85 @@ function sendLocalStorage() {
     }
     sendMessage('localStorageData', { storage: JSON.stringify(blueMapStorage) });
 }
+
+/**
+ * Recursively extracts all marker sets and markers from BlueMap
+ * @returns {Array} Array of marker sets with their markers and children
+ */
+function getAllMarkerData() {
+    const extractMarkerSet = (markerSet) => {
+        return {
+            id: markerSet.id,
+            label: markerSet.label,
+            listed: markerSet.listed,
+            visible: markerSet.visible,
+            toggleable: markerSet.toggleable,
+            markers: markerSet.markers ? markerSet.markers.map(marker => ({
+                id: marker.id,
+                label: marker.label,
+                type: marker.type,
+                listed: marker.listed,
+                visible: marker.visible,
+                position: marker.position ? {
+                    x: marker.position.x,
+                    y: marker.position.y,
+                    z: marker.position.z
+                } : null,
+                playerUuid: marker.playerUuid,
+                name: marker.name,
+                foreign: marker.foreign
+            })) : [],
+            markerSets: markerSet.markerSets ? markerSet.markerSets.map(extractMarkerSet) : []
+        };
+    };
+    if (!bluemap?.mapViewer?.data?.markerSets) return [];
+    return bluemap.mapViewer.data.markerSets.map(extractMarkerSet);
+}
+
+/**
+ * Sends all marker sets and markers to the parent window
+ */
+function sendMarkers() {
+    const markerData = getAllMarkerData();
+    sendMessage('markerListUpdate', { markers: JSON.stringify(markerData) });
+}
+
+/**
+ * Sends a request to follow a player marker by markerId
+ */
+function followPlayerMarker(markerId) {
+    sendMessage('followMarker', { markerId });
+}
+
+/**
+ * Sends the current player list to the parent window
+ */
+function sendPlayerList() {
+    const playerSet = bluemap?.mapViewer?.markers?.markerSets?.get('bm-players');
+    let players = [];
+    if (playerSet) {
+        players = Array.from(playerSet.markers.values()).map(marker => ({
+            uuid: marker.data.playerUuid,
+            name: marker.data.name,
+            position: marker.position,
+            rotation: marker.data.rotation,
+            foreign: marker.data.foreign
+        }));
+    }
+    sendMessage('playerListUpdate', { players: JSON.stringify(players) });
+}
+
+/**
+ * Sends a screenshot of the current map view to the parent window
+ */
+function sendScreenshot() {
+    try {
+        const canvas = bluemap?.mapViewer?.renderer?.domElement;
+        if (!canvas) throw new Error('Renderer canvas not found');
+        const dataUrl = canvas.toDataURL('image/png');
+        sendMessage('screenshot', { dataUrl });
+    } catch (error) {
+        console.error('Error taking screenshot:', error);
+        sendMessage('screenshot', { error: error.message });
+    }
+}
