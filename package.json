@@ -1,0 +1,22 @@
+{
+  "name": "bluemap-external-extender-packer",
+  "version": "1.0.0",
+  "description": "A script to pack bluemap external extender into a single file.",
+  "main": "pack.js",
+  "scripts": {
+    "start": "node ./pack.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aurailus/bluemap-external-extender.git"
+  },
+  "author": "Auri Collings",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Aurailus/bluemap-external-extender/issues"
+  },
+  "homepage": "https://github.com/Aurailus/bluemap-external-extender#readme",
+  "dependencies": {
+    "terser": "^5.44.0"
+  }
+}
